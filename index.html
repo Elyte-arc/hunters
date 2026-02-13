@@ -1,0 +1,2503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hunters Hotel Suite & Spa — Luxury Living in Lagos</title>
+    <meta name="description" content="Experience luxury and comfort at Hunters Hotel Suite & Spa, Ago Palace Way, Okota, Lagos. 22 exquisite rooms, spa, restaurant & more.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+        /* ===================== CSS VARIABLES ===================== */
+        :root {
+            --gold: #c8a45e;
+            --gold-light: #dfc08a;
+            --gold-dark: #a68340;
+            --dark: #1a1a1a;
+            --darker: #0f0f0f;
+            --charcoal: #2a2a2a;
+            --cream: #f5f0e8;
+            --cream-light: #faf7f2;
+            --text-light: #e8e0d4;
+            --text-muted: #9a9490;
+            --text-dark: #3a3530;
+            --overlay: rgba(15, 15, 15, 0.7);
+            --transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* ===================== RESET & BASE ===================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            background: var(--cream-light);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul { list-style: none; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===================== SCROLL ANIMATIONS ===================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.9s var(--transition), transform 0.9s var(--transition);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-80px);
+            transition: opacity 0.9s var(--transition), transform 0.9s var(--transition);
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(80px);
+            transition: opacity 0.9s var(--transition), transform 0.9s var(--transition);
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.85);
+            transition: opacity 0.9s var(--transition), transform 0.9s var(--transition);
+        }
+
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+
+        /* ===================== PRELOADER ===================== */
+        .preloader {
+            position: fixed;
+            inset: 0;
+            background: var(--darker);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 24px;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            animation: preloaderPulse 1.5s ease-in-out infinite;
+        }
+
+        .preloader-bar {
+            width: 200px;
+            height: 2px;
+            background: var(--charcoal);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .preloader-bar::after {
+            content: '';
+            display: block;
+            width: 40%;
+            height: 100%;
+            background: var(--gold);
+            border-radius: 2px;
+            animation: preloaderSlide 1.2s ease-in-out infinite;
+        }
+
+        @keyframes preloaderPulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes preloaderSlide {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(600%); }
+        }
+
+        /* ===================== NAVIGATION ===================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.4s var(--transition);
+        }
+
+        .navbar.scrolled {
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 12px 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .nav-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .nav-logo-main {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--gold);
+            letter-spacing: 3px;
+            line-height: 1.2;
+        }
+
+        .nav-logo-sub {
+            font-size: 0.6rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            opacity: 0.7;
+            font-weight: 500;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            padding: 4px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--gold);
+            transition: width 0.4s var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: transparent;
+            border: 1.5px solid var(--gold);
+            color: var(--gold) !important;
+            padding: 10px 24px !important;
+            font-size: 0.72rem !important;
+            letter-spacing: 2px !important;
+            cursor: pointer;
+            transition: all 0.4s ease !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold) !important;
+            color: var(--darker) !important;
+        }
+
+        .nav-cta::after { display: none !important; }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 2px;
+            background: var(--gold);
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: var(--darker);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            transition: right 0.5s var(--transition);
+        }
+
+        .mobile-menu.open {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            color: var(--text-light);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--gold);
+        }
+
+        /* ===================== HERO SECTION ===================== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: 
+                linear-gradient(180deg, rgba(15,15,15,0.3) 0%, rgba(15,15,15,0.5) 50%, rgba(15,15,15,0.85) 100%),
+                url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=80') center/cover no-repeat;
+            transform: scale(1.05);
+            animation: heroZoom 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroZoom {
+            0% { transform: scale(1.05); }
+            100% { transform: scale(1.15); }
+        }
+
+        .hero-particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 50%;
+            opacity: 0;
+            animation: floatParticle 8s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 7s; }
+        .particle:nth-child(2) { left: 25%; animation-delay: 1.5s; animation-duration: 9s; }
+        .particle:nth-child(3) { left: 40%; animation-delay: 0.8s; animation-duration: 6s; }
+        .particle:nth-child(4) { left: 55%; animation-delay: 2.2s; animation-duration: 8s; }
+        .particle:nth-child(5) { left: 70%; animation-delay: 0.3s; animation-duration: 10s; }
+        .particle:nth-child(6) { left: 85%; animation-delay: 1.8s; animation-duration: 7.5s; }
+        .particle:nth-child(7) { left: 15%; animation-delay: 3s; animation-duration: 9.5s; }
+        .particle:nth-child(8) { left: 60%; animation-delay: 0.5s; animation-duration: 6.5s; }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            20% { opacity: 0.6; }
+            80% { opacity: 0.3; }
+            100% { transform: translateY(-20vh) scale(1); opacity: 0; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 24px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 24px;
+            border: 1px solid rgba(200, 164, 94, 0.3);
+            border-radius: 100px;
+            margin-bottom: 28px;
+            opacity: 0;
+            animation: heroBadgeIn 1s ease forwards 0.5s;
+        }
+
+        .hero-badge i {
+            color: var(--gold);
+            font-size: 0.85rem;
+        }
+
+        .hero-badge span {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            font-weight: 500;
+        }
+
+        @keyframes heroBadgeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 7vw, 5.5rem);
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: heroTitleIn 1.2s ease forwards 0.8s;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        @keyframes heroTitleIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1rem, 2.2vw, 1.35rem);
+            color: var(--text-muted);
+            max-width: 560px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+            opacity: 0;
+            animation: heroSubIn 1s ease forwards 1.2s;
+        }
+
+        @keyframes heroSubIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: heroBtnIn 1s ease forwards 1.5s;
+        }
+
+        @keyframes heroBtnIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--gold);
+            color: var(--darker);
+            padding: 16px 36px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(200, 164, 94, 0.3);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: #fff;
+            padding: 16px 36px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            border: 1.5px solid rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        /* Hero scroll indicator */
+        .hero-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            z-index: 2;
+            opacity: 0;
+            animation: heroScrollIn 1s ease forwards 2s;
+        }
+
+        @keyframes heroScrollIn {
+            from { opacity: 0; }
+            to { opacity: 0.6; }
+        }
+
+        .hero-scroll span {
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* ===================== SECTION STYLES ===================== */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-dark {
+            background: var(--darker);
+            color: var(--text-light);
+        }
+
+        .section-charcoal {
+            background: var(--charcoal);
+            color: var(--text-light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .section-tag::before,
+        .section-tag::after {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.4;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .section-desc {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .section-dark .section-title {
+            color: #fff;
+        }
+
+        /* Gold divider */
+        .gold-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 20px auto;
+        }
+
+        /* ===================== ABOUT SECTION ===================== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image-wrap {
+            position: relative;
+        }
+
+        .about-image-wrap::before {
+            content: '';
+            position: absolute;
+            top: -16px;
+            left: -16px;
+            right: 16px;
+            bottom: 16px;
+            border: 2px solid var(--gold);
+            opacity: 0.3;
+            z-index: 0;
+            transition: all 0.5s ease;
+        }
+
+        .about-image-wrap:hover::before {
+            top: -8px;
+            left: -8px;
+        }
+
+        .about-image-wrap img {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            filter: brightness(0.9);
+            transition: filter 0.5s ease;
+        }
+
+        .about-image-wrap:hover img {
+            filter: brightness(1);
+        }
+
+        .about-exp-badge {
+            position: absolute;
+            bottom: 30px;
+            right: -20px;
+            background: var(--gold);
+            color: var(--darker);
+            padding: 20px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .about-exp-badge .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .about-exp-badge .label {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 16px;
+            font-size: 0.92rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: rgba(200, 164, 94, 0.06);
+            border-left: 3px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .about-feature:hover {
+            background: rgba(200, 164, 94, 0.12);
+            transform: translateX(4px);
+        }
+
+        .about-feature i {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .about-feature span {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===================== ROOMS SECTION ===================== */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .room-card {
+            background: var(--dark);
+            overflow: hidden;
+            position: relative;
+            group: true;
+            transition: transform 0.5s var(--transition), box-shadow 0.5s ease;
+        }
+
+        .room-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .room-image {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .room-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s var(--transition);
+        }
+
+        .room-card:hover .room-image img {
+            transform: scale(1.1);
+        }
+
+        .room-image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15,15,15,0.8) 0%, transparent 50%);
+        }
+
+        .room-price {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--gold);
+            color: var(--darker);
+            padding: 8px 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .room-info {
+            padding: 28px 24px;
+        }
+
+        .room-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .room-desc {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .room-amenities {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .room-amenity {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+
+        .room-amenity i {
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
+
+        .room-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            color: var(--gold);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: gap 0.3s ease;
+        }
+
+        .room-cta:hover {
+            gap: 14px;
+        }
+
+        /* ===================== AMENITIES SECTION ===================== */
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .amenity-card {
+            text-align: center;
+            padding: 40px 24px;
+            border: 1px solid rgba(200, 164, 94, 0.12);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .amenity-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: rgba(200, 164, 94, 0.05);
+            transition: height 0.5s var(--transition);
+        }
+
+        .amenity-card:hover::before {
+            height: 100%;
+        }
+
+        .amenity-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+        }
+
+        .amenity-icon {
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            border: 1.5px solid var(--gold);
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .amenity-card:hover .amenity-icon {
+            background: var(--gold);
+            transform: scale(1.1);
+        }
+
+        .amenity-icon i {
+            font-size: 1.4rem;
+            color: var(--gold);
+            transition: color 0.3s ease;
+        }
+
+        .amenity-card:hover .amenity-icon i {
+            color: var(--darker);
+        }
+
+        .amenity-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .amenity-card p {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===================== GALLERY SECTION ===================== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto auto;
+            gap: 12px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s var(--transition);
+            min-height: 200px;
+        }
+
+        .gallery-item:nth-child(1) img {
+            min-height: 420px;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(15, 15, 15, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            font-size: 2rem;
+            color: var(--gold);
+            transform: scale(0.5);
+            transition: transform 0.4s var(--transition-bounce);
+        }
+
+        .gallery-item:hover .gallery-overlay i {
+            transform: scale(1);
+        }
+
+        /* ===================== TESTIMONIALS ===================== */
+        .testimonials-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .testimonial-quote-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            opacity: 0.3;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-slide {
+            display: none;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+            animation: testimonialFadeIn 0.6s ease;
+        }
+
+        @keyframes testimonialFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .testimonial-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-style: italic;
+            line-height: 1.8;
+            color: var(--cream);
+            margin-bottom: 28px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .testimonial-author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold);
+        }
+
+        .testimonial-author-info h5 {
+            color: var(--gold);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .testimonial-author-info span {
+            color: var(--text-muted);
+            font-size: 0.78rem;
+        }
+
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 32px;
+        }
+
+        .testimonial-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1.5px solid var(--gold);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-dot.active {
+            background: var(--gold);
+            transform: scale(1.2);
+        }
+
+        /* ===================== RESTAURANT ===================== */
+        .restaurant-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .restaurant-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .restaurant-image img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .restaurant-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .restaurant-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .restaurant-content .cuisine-tag {
+            color: var(--gold);
+            font-size: 0.72rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .restaurant-content p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 16px;
+            font-size: 0.92rem;
+        }
+
+        .restaurant-hours {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 24px;
+            padding: 20px;
+            background: rgba(200, 164, 94, 0.06);
+            border-left: 3px solid var(--gold);
+        }
+
+        .restaurant-hours h5 {
+            font-size: 0.78rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+
+        .restaurant-hours p {
+            margin-bottom: 4px;
+            font-size: 0.85rem;
+        }
+
+        /* ===================== CONTACT / BOOKING ===================== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 14px 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(200, 164, 94, 0.2);
+            color: var(--text-light);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.88rem;
+            outline: none;
+            transition: border-color 0.3s ease, background 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--gold);
+            background: rgba(200, 164, 94, 0.05);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .form-group select option {
+            background: var(--darker);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .contact-info-card {
+            display: flex;
+            gap: 16px;
+            padding: 24px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(200, 164, 94, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-card:hover {
+            border-color: var(--gold);
+            transform: translateX(4px);
+        }
+
+        .contact-info-card i {
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-top: 2px;
+        }
+
+        .contact-info-card h5 {
+            font-size: 0.92rem;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .contact-info-card p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .map-container {
+            margin-top: 16px;
+            height: 200px;
+            border: 1px solid rgba(200, 164, 94, 0.15);
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(0.7) contrast(1.1);
+            transition: filter 0.4s ease;
+        }
+
+        .map-container:hover iframe {
+            filter: grayscale(0) contrast(1);
+        }
+
+        /* ===================== CHATBOT SECTION ===================== */
+        .chatbot-banner {
+            background: linear-gradient(135deg, var(--darker) 0%, #1f1a14 100%);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chatbot-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(200, 164, 94, 0.04) 0%, transparent 60%);
+            animation: chatbotGlow 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes chatbotGlow {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(20px, -20px); }
+        }
+
+        .chatbot-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .chatbot-icon-wrap {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(200, 164, 94, 0.1);
+            border: 2px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            animation: chatbotFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes chatbotFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .chatbot-icon-wrap i {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        .chatbot-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .chatbot-content p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 28px;
+            font-size: 0.95rem;
+        }
+
+        .chatbot-demo-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(200, 164, 94, 0.15);
+            padding: 28px;
+            max-width: 450px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .chatbot-demo-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(200, 164, 94, 0.1);
+        }
+
+        .chatbot-demo-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--gold);
+            animation: chatDotPulse 2s ease infinite;
+        }
+
+        @keyframes chatDotPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .chatbot-demo-header span {
+            font-size: 0.8rem;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .chat-message {
+            padding: 12px 16px;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            border-radius: 4px;
+        }
+
+        .chat-message.bot {
+            background: rgba(200, 164, 94, 0.08);
+            color: var(--cream);
+            border-left: 3px solid var(--gold);
+        }
+
+        .chat-message.user {
+            background: rgba(255,255,255,0.04);
+            color: var(--text-muted);
+            margin-left: 30px;
+        }
+
+        .chat-input-demo {
+            display: flex;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .chat-input-demo input {
+            flex: 1;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(200, 164, 94, 0.2);
+            color: var(--text-light);
+            font-size: 0.85rem;
+            outline: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .chat-input-demo button {
+            background: var(--gold);
+            color: var(--darker);
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .chat-input-demo button:hover {
+            background: var(--gold-light);
+        }
+
+        /* ===================== FOOTER ===================== */
+        .footer {
+            background: #0a0a0a;
+            padding: 60px 0 0;
+            color: var(--text-muted);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .footer-brand .nav-logo {
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-socials a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(200, 164, 94, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .footer-socials a:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .footer-socials a i {
+            color: var(--gold);
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-socials a:hover i {
+            color: var(--darker);
+        }
+
+        .footer h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            font-size: 0.82rem;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-links a::before {
+            content: '';
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-links a:hover::before {
+            width: 14px;
+        }
+
+        .footer-newsletter p {
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(200, 164, 94, 0.2);
+            color: var(--text-light);
+            font-size: 0.85rem;
+            outline: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .newsletter-form button {
+            background: var(--gold);
+            color: var(--darker);
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--gold-light);
+        }
+
+        .footer-bottom {
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.3);
+        }
+
+        /* ===================== FLOATING CHATBOT BUTTON ===================== */
+        .chatbot-fab {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 900;
+            box-shadow: 0 8px 30px rgba(200, 164, 94, 0.4);
+            transition: all 0.4s ease;
+            animation: fabPulse 3s ease-in-out infinite;
+        }
+
+        .chatbot-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(200, 164, 94, 0.5);
+        }
+
+        .chatbot-fab i {
+            font-size: 1.5rem;
+            color: var(--darker);
+        }
+
+        .chatbot-fab-label {
+            position: absolute;
+            right: 70px;
+            background: var(--darker);
+            color: var(--gold);
+            padding: 8px 16px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .chatbot-fab:hover .chatbot-fab-label {
+            opacity: 1;
+        }
+
+        @keyframes fabPulse {
+            0%, 100% { box-shadow: 0 8px 30px rgba(200, 164, 94, 0.3); }
+            50% { box-shadow: 0 8px 40px rgba(200, 164, 94, 0.6); }
+        }
+
+        /* ===================== BACK TO TOP ===================== */
+        .back-to-top {
+            position: fixed;
+            bottom: 28px;
+            left: 28px;
+            width: 46px;
+            height: 46px;
+            background: var(--charcoal);
+            border: 1px solid rgba(200, 164, 94, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 900;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--gold);
+        }
+
+        .back-to-top i {
+            color: var(--gold);
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-to-top:hover i {
+            color: var(--darker);
+        }
+
+        /* ===================== COUNTER SECTION ===================== */
+        .stats-bar {
+            background: var(--gold);
+            padding: 50px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            text-align: center;
+        }
+
+        .stat-item {
+            position: relative;
+        }
+
+        .stat-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 10%;
+            height: 80%;
+            width: 1px;
+            background: rgba(15, 15, 15, 0.15);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--darker);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stat-label {
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 1024px) {
+            .rooms-grid { grid-template-columns: repeat(2, 1fr); }
+            .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .gallery-item:nth-child(1) { grid-column: span 2; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+
+            .hero { min-height: 600px; }
+            .hero-title { font-size: 2.4rem; }
+
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-image-wrap::before { display: none; }
+            .about-image-wrap img { height: 350px; }
+            .about-exp-badge { right: 10px; bottom: 10px; padding: 14px; }
+            .about-exp-badge .number { font-size: 2rem; }
+            .about-features { grid-template-columns: 1fr; }
+
+            .rooms-grid { grid-template-columns: 1fr; }
+            .room-image { height: 240px; }
+
+            .amenities-grid { grid-template-columns: 1fr 1fr; }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+            }
+            .gallery-item:nth-child(1) img { min-height: 250px; }
+
+            .restaurant-grid { grid-template-columns: 1fr; gap: 30px; }
+            .restaurant-image img { height: 300px; }
+
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+            .stat-item:nth-child(2)::after { display: none; }
+
+            .footer-grid { grid-template-columns: 1fr; }
+
+            .section { padding: 70px 0; }
+
+            .chatbot-fab { bottom: 20px; right: 20px; width: 54px; height: 54px; }
+            .chatbot-fab-label { display: none; }
+            .back-to-top { bottom: 20px; left: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: 2rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+            .amenities-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-item:nth-child(1) { grid-column: span 1; grid-row: span 1; }
+            .gallery-item:nth-child(1) img { min-height: 200px; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .stat-item::after { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-logo">HUNTERS</div>
+        <div class="preloader-bar"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <span class="nav-logo-main">HUNTERS</span>
+                <span class="nav-logo-sub">Hotel Suite & Spa</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#about">About</a>
+                <a href="#rooms">Rooms</a>
+                <a href="#amenities">Amenities</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#dining">Dining</a>
+                <a href="#contact">Contact</a>
+                <a href="#contact" class="nav-cta">Book Now</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#rooms" class="mobile-link">Rooms</a>
+        <a href="#amenities" class="mobile-link">Amenities</a>
+        <a href="#gallery" class="mobile-link">Gallery</a>
+        <a href="#dining" class="mobile-link">Dining</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+        <a href="#contact" class="mobile-link" style="color: var(--gold);">Book Now</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="ri-star-fill"></i>
+                <span>Premium Luxury Hotel in Lagos</span>
+            </div>
+            <h1 class="hero-title">Where <em>Elegance</em><br>Meets Comfort</h1>
+            <p class="hero-subtitle">Discover unparalleled luxury at Hunters Hotel Suite & Spa — your serene escape on Ago Palace Way, Okota, Lagos.</p>
+            <div class="hero-buttons">
+                <a href="#rooms" class="btn-primary">
+                    <i class="ri-hotel-bed-line"></i>
+                    Explore Rooms
+                </a>
+                <a href="#contact" class="btn-secondary">
+                    <i class="ri-phone-line"></i>
+                    Contact Us
+                </a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal stagger-1">
+                    <div class="stat-number" data-target="22">0</div>
+                    <div class="stat-label">Luxury Rooms</div>
+                </div>
+                <div class="stat-item reveal stagger-2">
+                    <div class="stat-number" data-target="5000">0</div>
+                    <div class="stat-label">Happy Guests</div>
+                </div>
+                <div class="stat-item reveal stagger-3">
+                    <div class="stat-number" data-target="15">0</div>
+                    <div class="stat-label">Years of Service</div>
+                </div>
+                <div class="stat-item reveal stagger-4">
+                    <div class="stat-number" data-target="24">0</div>
+                    <div class="stat-label">Hour Service</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image-wrap reveal-left">
+                    <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=700&q=80" alt="Hunters Hotel Suite & Spa Lobby" loading="lazy">
+                    <div class="about-exp-badge">
+                        <div class="number">15+</div>
+                        <div class="label">Years</div>
+                    </div>
+                </div>
+                <div class="about-text reveal-right">
+                    <div class="section-tag">
+                        About Us
+                    </div>
+                    <h3>A Legacy of <em>Luxury</em><br>Hospitality in Lagos</h3>
+                    <p>Nestled in the heart of Okota along Ago Palace Way, Hunters Hotel Suite & Spa is a distinguished 3-star property offering a perfect blend of Nigerian warmth and world-class hospitality.</p>
+                    <p>With 22 thoughtfully designed rooms, a full-service spa, an exquisite restaurant, and dedicated event spaces, we cater to business travellers, families, and those seeking a tranquil retreat just minutes from Murtala Muhammed International Airport.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="ri-shield-check-line"></i>
+                            <span>24/7 Security</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="ri-car-line"></i>
+                            <span>Free Parking</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="ri-flight-takeoff-line"></i>
+                            <span>Airport Shuttle</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="ri-wifi-line"></i>
+                            <span>High-Speed WiFi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section class="section section-dark" id="rooms">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Accommodation</div>
+                <h2 class="section-title">Our <em>Exquisite</em> Rooms</h2>
+                <div class="gold-divider"></div>
+                <p class="section-desc">Each of our 22 rooms is designed with meticulous attention to detail, ensuring a restful and luxurious experience.</p>
+            </div>
+            <div class="rooms-grid">
+                <!-- Room 1 -->
+                <div class="room-card reveal stagger-1">
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&q=80" alt="Standard Deluxe Room" loading="lazy">
+                        <div class="room-image-overlay"></div>
+                        <div class="room-price">From ₦25,000</div>
+                    </div>
+                    <div class="room-info">
+                        <h3 class="room-name">Standard Deluxe</h3>
+                        <p class="room-desc">A cozy and elegant room perfect for solo travellers or couples seeking comfort and style.</p>
+                        <div class="room-amenities">
+                            <span class="room-amenity"><i class="ri-hotel-bed-line"></i> King Bed</span>
+                            <span class="room-amenity"><i class="ri-tv-2-line"></i> Flat Screen TV</span>
+                            <span class="room-amenity"><i class="ri-temp-cold-line"></i> A/C</span>
+                            <span class="room-amenity"><i class="ri-wifi-line"></i> WiFi</span>
+                        </div>
+                        <a href="#contact" class="room-cta">Book Now <i class="ri-arrow-right-line"></i></a>
+                    </div>
+                </div>
+                <!-- Room 2 -->
+                <div class="room-card reveal stagger-2">
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&q=80" alt="Executive Suite" loading="lazy">
+                        <div class="room-image-overlay"></div>
+                        <div class="room-price">From ₦45,000</div>
+                    </div>
+                    <div class="room-info">
+                        <h3 class="room-name">Executive Suite</h3>
+                        <p class="room-desc">Spacious living area with premium furnishings, ideal for business executives and VIP guests.</p>
+                        <div class="room-amenities">
+                            <span class="room-amenity"><i class="ri-hotel-bed-line"></i> Super King</span>
+                            <span class="room-amenity"><i class="ri-goblet-line"></i> Mini Bar</span>
+                            <span class="room-amenity"><i class="ri-safe-2-line"></i> Safe Box</span>
+                            <span class="room-amenity"><i class="ri-wifi-line"></i> WiFi</span>
+                        </div>
+                        <a href="#contact" class="room-cta">Book Now <i class="ri-arrow-right-line"></i></a>
+                    </div>
+                </div>
+                <!-- Room 3 -->
+                <div class="room-card reveal stagger-3">
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80" alt="Presidential Suite" loading="lazy">
+                        <div class="room-image-overlay"></div>
+                        <div class="room-price">From ₦75,000</div>
+                    </div>
+                    <div class="room-info">
+                        <h3 class="room-name">Presidential Suite</h3>
+                        <p class="room-desc">The pinnacle of luxury — expansive layout with a private lounge, jacuzzi bath, and panoramic views.</p>
+                        <div class="room-amenities">
+                            <span class="room-amenity"><i class="ri-hotel-bed-line"></i> Emperor Bed</span>
+                            <span class="room-amenity"><i class="ri-drop-line"></i> Jacuzzi</span>
+                            <span class="room-amenity"><i class="ri-door-open-line"></i> Lounge</span>
+                            <span class="room-amenity"><i class="ri-wifi-line"></i> WiFi</span>
+                        </div>
+                        <a href="#contact" class="room-cta">Book Now <i class="ri-arrow-right-line"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section class="section" id="amenities">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Facilities</div>
+                <h2 class="section-title">World-Class <em>Amenities</em></h2>
+                <div class="gold-divider"></div>
+                <p class="section-desc">Everything you need for a memorable stay — from relaxation to recreation and beyond.</p>
+            </div>
+            <div class="amenities-grid">
+                <div class="amenity-card reveal stagger-1">
+                    <div class="amenity-icon"><i class="ri-heart-pulse-line"></i></div>
+                    <h4>Spa & Wellness</h4>
+                    <p>Rejuvenate body and soul in our full-service spa with massages, facials, and hydrotherapy treatments.</p>
+                </div>
+                <div class="amenity-card reveal stagger-2">
+                    <div class="amenity-icon"><i class="ri-restaurant-2-line"></i></div>
+                    <h4>Fine Dining</h4>
+                    <p>Savour exquisite local and continental dishes prepared by our world-class culinary team.</p>
+                </div>
+                <div class="amenity-card reveal stagger-3">
+                    <div class="amenity-icon"><i class="ri-goblet-line"></i></div>
+                    <h4>Lounge & Bar</h4>
+                    <p>Unwind with premium cocktails and curated drinks in our sophisticated lounge and bar area.</p>
+                </div>
+                <div class="amenity-card reveal stagger-4">
+                    <div class="amenity-icon"><i class="ri-parking-box-line"></i></div>
+                    <h4>Secure Parking</h4>
+                    <p>Complimentary, well-lit parking with 24/7 surveillance for all hotel guests.</p>
+                </div>
+                <div class="amenity-card reveal stagger-1">
+                    <div class="amenity-icon"><i class="ri-bus-line"></i></div>
+                    <h4>Airport Transfer</h4>
+                    <p>Seamless pickup and drop-off services to and from Murtala Muhammed International Airport.</p>
+                </div>
+                <div class="amenity-card reveal stagger-2">
+                    <div class="amenity-icon"><i class="ri-calendar-event-line"></i></div>
+                    <h4>Event Spaces</h4>
+                    <p>Versatile conference and event halls perfect for meetings, weddings, and celebrations.</p>
+                </div>
+                <div class="amenity-card reveal stagger-3">
+                    <div class="amenity-icon"><i class="ri-service-line"></i></div>
+                    <h4>Room Service</h4>
+                    <p>Round-the-clock in-room dining with a diverse menu delivered right to your door.</p>
+                </div>
+                <div class="amenity-card reveal stagger-4">
+                    <div class="amenity-icon"><i class="ri-plant-line"></i></div>
+                    <h4>Garden Retreat</h4>
+                    <p>A beautifully landscaped garden providing a serene space for relaxation and fresh air.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section section-dark" id="gallery">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Gallery</div>
+                <h2 class="section-title">Glimpse Into <em>Paradise</em></h2>
+                <div class="gold-divider"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal-scale stagger-1">
+                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80" alt="Hotel Exterior" loading="lazy">
+                    <div class="gallery-overlay"><i class="ri-zoom-in-line"></i></div>
+                </div>
+                <div class="gallery-item reveal-scale stagger-2">
+                    <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=500&q=80" alt="Luxury Room" loading="lazy">
+                    <div class="gallery-overlay"><i class="ri-zoom-in-line"></i></div>
+                </div>
+                <div class="gallery-item reveal-scale stagger-3">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&q=80" alt="Hotel Lounge" loading="lazy">
+                    <div class="gallery-overlay"><i class="ri-zoom-in-line"></i></div>
+                </div>
+                <div class="gallery-item reveal-scale stagger-4">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=500&q=80" alt="Pool Area" loading="lazy">
+                    <div class="gallery-overlay"><i class="ri-zoom-in-line"></i></div>
+                </div>
+                <div class="gallery-item reveal-scale stagger-5">
+                    <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=500&q=80" alt="Spa" loading="lazy">
+                    <div class="gallery-overlay"><i class="ri-zoom-in-line"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section section-charcoal" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Testimonials</div>
+                <h2 class="section-title">What Our <em>Guests</em> Say</h2>
+                <div class="gold-divider"></div>
+            </div>
+            <div class="testimonials-wrapper reveal">
+                <i class="ri-double-quotes-l testimonial-quote-icon"></i>
+                
+                <div class="testimonial-slide active" data-index="0">
+                    <p class="testimonial-text">The rooms were absolutely spotless and beautifully furnished. The staff went above and beyond to make our anniversary special. We'll definitely be returning!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-info">
+                            <h5>Adebayo & Funke O.</h5>
+                            <span>Celebrated Anniversary</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-slide" data-index="1">
+                    <p class="testimonial-text">Perfect location for my business trips. Clean, comfortable, and the restaurant serves amazing jollof rice. The spa was a wonderful surprise after a long day of meetings.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-info">
+                            <h5>Chinedu A.</h5>
+                            <span>Business Traveller</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-slide" data-index="2">
+                    <p class="testimonial-text">The colorful lighting and beautiful property made our stay memorable. Great value for money, and the service was top-notch. Highly recommended for anyone visiting Lagos!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-author-info">
+                            <h5>Blessing E.</h5>
+                            <span>Family Holiday</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-dots">
+                    <div class="testimonial-dot active" data-index="0"></div>
+                    <div class="testimonial-dot" data-index="1"></div>
+                    <div class="testimonial-dot" data-index="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restaurant Section -->
+    <section class="section" id="dining">
+        <div class="container">
+            <div class="restaurant-grid">
+                <div class="restaurant-image reveal-left">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&q=80" alt="Hunters Hotel Restaurant" loading="lazy">
+                </div>
+                <div class="restaurant-content reveal-right">
+                    <div class="section-tag">Cuisine</div>
+                    <h3>The Hunters <em>Restaurant</em></h3>
+                    <span class="cuisine-tag">Nigerian • Continental • Intercontinental</span>
+                    <p>Embark on a culinary journey through Nigeria and beyond. Our restaurant serves a carefully curated menu featuring authentic Nigerian delicacies, continental classics, and international favourites — all prepared with the freshest ingredients by our talented kitchen team.</p>
+                    <p>Whether you're starting your morning with a hearty Nigerian breakfast or winding down with a candle-lit dinner, every meal at Hunters is an experience to remember.</p>
+                    <div class="restaurant-hours">
+                        <h5><i class="ri-time-line"></i> Dining Hours</h5>
+                        <p>Breakfast: 6:30 AM — 10:30 AM</p>
+                        <p>Lunch: 12:00 PM — 3:30 PM</p>
+                        <p>Dinner: 6:00 PM — 10:30 PM</p>
+                        <p>Bar: 11:00 AM — Late</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Chatbot Section -->
+    <section class="chatbot-banner" id="chatbot">
+        <div class="chatbot-content reveal">
+            <div class="chatbot-icon-wrap">
+                <i class="ri-robot-2-line"></i>
+            </div>
+            <h3>Meet Our AI <em>Concierge</em></h3>
+            <p>Have questions? Need to make a reservation? Our 24/7 AI-powered concierge is here to assist you instantly — just ask anything about rooms, amenities, events, or local recommendations.</p>
+            
+            <div class="chatbot-demo-box">
+                <div class="chatbot-demo-header">
+                    <div class="chatbot-demo-dot"></div>
+                    <span>Hunters AI Assistant — Online</span>
+                </div>
+                <div class="chat-message bot">Welcome to Hunters Hotel Suite & Spa! I'm here to help with bookings, room info, spa services, and more. How can I assist you today?</div>
+                <div class="chat-message user">Do you have any executive suites available this weekend?</div>
+                <div class="chat-message bot">Yes! We have Executive Suites available starting from ₦45,000/night. Shall I help you with a reservation?</div>
+                <div class="chat-input-demo">
+                    <input type="text" placeholder="Type your question..." disabled>
+                    <button><i class="ri-send-plane-fill"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section section-dark" id="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-tag">Get in Touch</div>
+                <h2 class="section-title">Book Your <em>Stay</em></h2>
+                <div class="gold-divider"></div>
+                <p class="section-desc">Ready to experience luxury? Reach out or fill the form below and we'll get back to you in no time.</p>
+            </div>
+            <div class="contact-grid">
+                <form class="contact-form reveal-left" onsubmit="event.preventDefault(); alert('Thank you! We will contact you shortly.');">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="you@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" placeholder="+234 800 000 0000">
+                        </div>
+                        <div class="form-group">
+                            <label>Room Type</label>
+                            <select>
+                                <option value="">Select a room</option>
+                                <option>Standard Deluxe</option>
+                                <option>Executive Suite</option>
+                                <option>Presidential Suite</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Check-In</label>
+                            <input type="date">
+                        </div>
+                        <div class="form-group">
+                            <label>Check-Out</label>
+                            <input type="date">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Special Requests</label>
+                        <textarea placeholder="Any special requirements or questions..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="align-self: flex-start;">
+                        <i class="ri-send-plane-line"></i>
+                        Submit Reservation
+                    </button>
+                </form>
+                <div class="contact-info reveal-right">
+                    <div class="contact-info-card">
+                        <i class="ri-map-pin-2-fill"></i>
+                        <div>
+                            <h5>Our Location</h5>
+                            <p>2, Dele Orisabiyi Street,<br>By Apena Bus-Stop, Ago Palace Way,<br>Okota, Lagos, Nigeria</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <i class="ri-phone-fill"></i>
+                        <div>
+                            <h5>Call Us</h5>
+                            <p>+234 801 234 5678<br>+234 809 876 5432</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <i class="ri-mail-fill"></i>
+                        <div>
+                            <h5>Email Us</h5>
+                            <p>reservations@huntershotel.com<br>info@huntershotel.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <i class="ri-time-fill"></i>
+                        <div>
+                            <h5>Reception Hours</h5>
+                            <p>24 Hours — 7 Days a Week<br>We never close!</p>
+                        </div>
+                    </div>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.2!2d3.32!3d6.49!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMjknMjQuMCJOIDPCsDE5JzEyLjAiRQ!5e0!3m2!1sen!2sng!4v1700000000000!5m2!1sen!2sng" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="nav-logo">
+                        <span class="nav-logo-main">HUNTERS</span>
+                        <span class="nav-logo-sub">Hotel Suite & Spa</span>
+                    </div>
+                    <p>Experience unmatched luxury and Nigerian hospitality in the heart of Lagos. Your comfort is our commitment.</p>
+                    <div class="footer-socials">
+                        <a href="https://www.instagram.com/officialhuntershotel/" target="_blank"><i class="ri-instagram-line"></i></a>
+                        <a href="#"><i class="ri-facebook-fill"></i></a>
+                        <a href="#"><i class="ri-twitter-x-line"></i></a>
+                        <a href="#"><i class="ri-whatsapp-line"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="#about">About Us</a>
+                        <a href="#rooms">Our Rooms</a>
+                        <a href="#amenities">Amenities</a>
+                        <a href="#gallery">Gallery</a>
+                        <a href="#dining">Restaurant</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Services</h4>
+                    <div class="footer-links">
+                        <a href="#">Spa & Wellness</a>
+                        <a href="#">Airport Transfer</a>
+                        <a href="#">Event Hosting</a>
+                        <a href="#">Room Service</a>
+                        <a href="#">Laundry</a>
+                        <a href="#">Concierge</a>
+                    </div>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe for exclusive offers, event updates, and special packages.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button><i class="ri-arrow-right-line"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Hunters Hotel Suite & Spa. All rights reserved. Designed with <i class="ri-heart-fill" style="color: var(--gold);"></i> in Lagos.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Chatbot Button -->
+    <!-- <div class="chatbot-fab" id="chatbotFab" onclick="window.open('https://tidio.com', '_blank')">
+        <i class="ri-message-3-fill"></i>
+        <div class="chatbot-fab-label">Chat with AI Concierge</div>
+    </div> -->
+
+    <!-- Back to Top -->
+    <div class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="ri-arrow-up-line"></i>
+    </div>
+
+    <script>
+        // =============== PRELOADER ===============
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 1500);
+        });
+
+        // =============== NAVBAR SCROLL ===============
+        const navbar = document.getElementById('navbar');
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // =============== MOBILE MENU ===============
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // =============== SCROLL REVEAL ===============
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // =============== COUNTER ANIMATION ===============
+        const counters = document.querySelectorAll('.stat-number');
+        let counterStarted = false;
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !counterStarted) {
+                    counterStarted = true;
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        const duration = 2000;
+                        const step = target / (duration / 16);
+                        let current = 0;
+
+                        const updateCounter = () => {
+                            current += step;
+                            if (current < target) {
+                                counter.textContent = Math.floor(current).toLocaleString();
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.textContent = target.toLocaleString() + '+';
+                            }
+                        };
+                        updateCounter();
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(c => counterObserver.observe(c));
+
+        // =============== TESTIMONIAL SLIDER ===============
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const dots = document.querySelectorAll('.testimonial-dot');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                showSlide(+dot.getAttribute('data-index'));
+            });
+        });
+
+        // Auto-rotate testimonials
+        setInterval(() => {
+            showSlide((currentSlide + 1) % slides.length);
+        }, 5000);
+
+        // =============== SMOOTH SCROLL FOR NAV ===============
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // =============== PARALLAX EFFECT ON HERO ===============
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero-bg');
+            if (hero) {
+                const scrolled = window.scrollY;
+                hero.style.transform = `scale(${1.05 + scrolled * 0.0002}) translateY(${scrolled * 0.3}px)`;
+            }
+        });
+    </script>
+
+
+<!-- <script src="//code.tidio.co/0vpdjiaxai79wnfcw1ikjq2wet29yft0.js" async></script> -->
+
+ <elevenlabs-convai agent-id="agent_1001khc4tyn2ex38pe5r4xr7pg12"></elevenlabs-convai><script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+  </body>
+</html>
