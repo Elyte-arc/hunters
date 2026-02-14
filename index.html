@@ -2498,6 +2498,68 @@
 
 <!-- <script src="//code.tidio.co/0vpdjiaxai79wnfcw1ikjq2wet29yft0.js" async></script> -->
 
- <elevenlabs-convai agent-id="agent_1001khc4tyn2ex38pe5r4xr7pg12"></elevenlabs-convai><script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+<!-- ElevenLabs widget (hidden by default) -->
+<elevenlabs-convai 
+    agent-id="agent_1001khc4tyn2ex38pe5r4xr7pg12"
+    style="display: none;"
+></elevenlabs-convai>
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+
+<!-- Custom call icon -->
+<div id="voiceAiBtn" style="
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #c8a45e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 8px 30px rgba(200,164,94,0.4);
+    animation: fabPulse 3s ease-in-out infinite;
+">
+    <i class="ri-phone-fill" style="font-size:1.5rem;color:#0f0f0f;"></i>
+</div>
+
+<!-- Close button (hidden by default) -->
+<div id="voiceAiClose" style="
+    display: none;
+    position: fixed;
+    bottom: 28px;
+    right: 96px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #2a2a2a;
+    border: 1.5px solid #c8a45e;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+">
+    <i class="ri-close-line" style="font-size:1.2rem;color:#c8a45e;"></i>
+</div>
+
+<script>
+    const voiceBtn = document.getElementById('voiceAiBtn');
+    const voiceClose = document.getElementById('voiceAiClose');
+    const voiceWidget = document.querySelector('elevenlabs-convai');
+
+    voiceBtn.addEventListener('click', () => {
+        voiceWidget.style.display = 'block';
+        voiceBtn.style.display = 'none';
+        voiceClose.style.display = 'flex';
+    });
+
+    voiceClose.addEventListener('click', () => {
+        voiceWidget.style.display = 'none';
+        voiceClose.style.display = 'none';
+        voiceBtn.style.display = 'flex';
+    });
+</script>
   </body>
 </html>
